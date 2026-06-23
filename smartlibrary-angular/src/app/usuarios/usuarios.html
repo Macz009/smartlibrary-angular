@@ -1,0 +1,131 @@
+<div class="modulo-header">
+  <h1>Gestión de Usuarios</h1>
+  <p>Administración de usuarios del sistema SmartLibrary.</p>
+</div>
+
+<div class="form-grid">
+
+  <div class="card">
+    <h2>Registrar Usuario</h2>
+
+    <form #formUsuario="ngForm" (ngSubmit)="guardarUsuario(formUsuario)">
+      <p>
+        <label>ID Persona:</label>
+        <input type="number" name="idPersona" [(ngModel)]="usuario.idPersona">
+      </p>
+
+      <p>
+        <label>Usuario:</label>
+        <input type="text" name="user" [(ngModel)]="usuario.user">
+      </p>
+
+      <p>
+        <label>Contraseña:</label>
+        <input type="password" name="password" [(ngModel)]="usuario.password">
+      </p>
+
+      <p>
+        <label>Tipo Usuario:</label>
+        <input type="text" name="tipoUsuario" [(ngModel)]="usuario.tipoUsuario">
+      </p>
+
+      <button type="submit">Guardar Usuario</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Buscar Usuario</h2>
+
+    <p>
+      <label>ID Usuario:</label>
+      <input type="number" name="idBuscar" [(ngModel)]="idBuscar">
+    </p>
+
+    <button type="button" (click)="buscarUsuario()">Buscar Usuario</button>
+
+    <div class="resultado" *ngIf="usuarioEncontrado">
+      <h3>Resultado</h3>
+      <p><strong>ID:</strong> {{ usuarioEncontrado.id }}</p>
+      <p><strong>ID Persona:</strong> {{ usuarioEncontrado.idPersona }}</p>
+      <p><strong>Usuario:</strong> {{ usuarioEncontrado.user }}</p>
+      <p><strong>Password:</strong> {{ usuarioEncontrado.password }}</p>
+      <p><strong>Tipo Usuario:</strong> {{ usuarioEncontrado.tipoUsuario }}</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Actualizar Usuario</h2>
+
+    <form #formActualizar="ngForm" (ngSubmit)="actualizarUsuario(formActualizar)">
+      <p>
+        <label>ID del Usuario a actualizar:</label>
+        <input type="number" name="idActualizar" [(ngModel)]="idActualizar">
+      </p>
+
+      <p>
+        <label>ID Persona:</label>
+        <input type="number" name="idPersonaActualizar" [(ngModel)]="usuarioActualizar.idPersona">
+      </p>
+
+      <p>
+        <label>Usuario:</label>
+        <input type="text" name="userActualizar" [(ngModel)]="usuarioActualizar.user">
+      </p>
+
+      <p>
+        <label>Contraseña:</label>
+        <input type="password" name="passwordActualizar" [(ngModel)]="usuarioActualizar.password">
+      </p>
+
+      <p>
+        <label>Tipo Usuario:</label>
+        <input type="text" name="tipoUsuarioActualizar" [(ngModel)]="usuarioActualizar.tipoUsuario">
+      </p>
+
+      <button type="submit">Actualizar Usuario</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Eliminar Usuario</h2>
+
+    <p>
+      <label>ID del Usuario a eliminar:</label>
+      <input type="number" name="idEliminar" [(ngModel)]="idEliminar">
+    </p>
+
+    <button type="button" class="btn-danger" (click)="eliminarUsuario()">
+      Eliminar Usuario
+    </button>
+  </div>
+
+</div>
+
+<div class="card tabla-card">
+  <div class="tabla-header">
+    <h2>Lista de Usuarios</h2>
+    <button type="button" (click)="listarUsuarios()">Listar Usuarios</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>ID Persona</th>
+        <th>Usuario</th>
+        <th>Password</th>
+        <th>Tipo Usuario</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let u of usuarios">
+        <td>{{ u.id }}</td>
+        <td>{{ u.idPersona }}</td>
+        <td>{{ u.user }}</td>
+        <td>{{ u.password }}</td>
+        <td>{{ u.tipoUsuario }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

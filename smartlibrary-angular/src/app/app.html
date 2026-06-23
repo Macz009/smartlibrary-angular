@@ -1,0 +1,21 @@
+<div class="contenedor-principal">
+
+  <div class="encabezado">
+    <h1>SMARTLIBRARY</h1>
+    <p>Sistema de Gestión Bibliotecaria</p>
+  </div>
+
+  <div class="menu">
+    <button (click)="mostrarUsuarios()">👤 Gestión de Usuarios</button>
+    <button (click)="mostrarLibros()">📚 Gestión de Libros</button>
+  </div>
+
+  <div class="contenido" *ngIf="moduloSeleccionado === 'usuarios'">
+    <app-usuarios></app-usuarios>
+  </div>
+
+  <div class="contenido" *ngIf="moduloSeleccionado === 'libros'">
+    <app-libros></app-libros>
+  </div>
+
+</div>

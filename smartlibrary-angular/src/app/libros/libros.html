@@ -1,0 +1,157 @@
+<div class="modulo-header">
+  <h1>Gestión de Libros</h1>
+  <p>Administración del catálogo bibliográfico del sistema SmartLibrary.</p>
+</div>
+
+<div class="form-grid">
+
+  <div class="card">
+    <h2>Registrar Libro</h2>
+
+    <form #formLibro="ngForm" (ngSubmit)="guardarLibro(formLibro)">
+      <p>
+        <label>ID Autor:</label>
+        <input type="number" name="idAutor" [(ngModel)]="libro.idAutor">
+      </p>
+
+      <p>
+        <label>ID Categoría:</label>
+        <input type="number" name="idCategoria" [(ngModel)]="libro.idCategoria">
+      </p>
+
+      <p>
+        <label>Título:</label>
+        <input type="text" name="titulo" [(ngModel)]="libro.titulo">
+      </p>
+
+      <p>
+        <label>Editorial:</label>
+        <input type="text" name="editorial" [(ngModel)]="libro.editorial">
+      </p>
+
+      <p>
+        <label>Páginas:</label>
+        <input type="number" name="paginas" [(ngModel)]="libro.paginas">
+      </p>
+
+      <p>
+        <label>Año de Lanzamiento:</label>
+        <input type="number" name="lanzamiento" [(ngModel)]="libro.lanzamiento">
+      </p>
+
+      <button type="submit">Guardar Libro</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Buscar Libro</h2>
+
+    <p>
+      <label>ID Libro:</label>
+      <input type="number" name="idBuscarLibro" [(ngModel)]="idBuscar">
+    </p>
+
+    <button type="button" (click)="buscarLibro()">Buscar Libro</button>
+
+    <div class="resultado" *ngIf="libroEncontrado">
+      <h3>Resultado</h3>
+      <p><strong>ID:</strong> {{ libroEncontrado.id }}</p>
+      <p><strong>ID Autor:</strong> {{ libroEncontrado.idAutor }}</p>
+      <p><strong>ID Categoría:</strong> {{ libroEncontrado.idCategoria }}</p>
+      <p><strong>Título:</strong> {{ libroEncontrado.titulo }}</p>
+      <p><strong>Editorial:</strong> {{ libroEncontrado.editorial }}</p>
+      <p><strong>Páginas:</strong> {{ libroEncontrado.paginas }}</p>
+      <p><strong>Lanzamiento:</strong> {{ libroEncontrado.lanzamiento }}</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Actualizar Libro</h2>
+
+    <form #formActualizarLibro="ngForm" (ngSubmit)="actualizarLibro(formActualizarLibro)">
+      <p>
+        <label>ID del Libro a actualizar:</label>
+        <input type="number" name="idActualizarLibro" [(ngModel)]="idActualizar">
+      </p>
+
+      <p>
+        <label>ID Autor:</label>
+        <input type="number" name="idAutorActualizar" [(ngModel)]="libroActualizar.idAutor">
+      </p>
+
+      <p>
+        <label>ID Categoría:</label>
+        <input type="number" name="idCategoriaActualizar" [(ngModel)]="libroActualizar.idCategoria">
+      </p>
+
+      <p>
+        <label>Título:</label>
+        <input type="text" name="tituloActualizar" [(ngModel)]="libroActualizar.titulo">
+      </p>
+
+      <p>
+        <label>Editorial:</label>
+        <input type="text" name="editorialActualizar" [(ngModel)]="libroActualizar.editorial">
+      </p>
+
+      <p>
+        <label>Páginas:</label>
+        <input type="number" name="paginasActualizar" [(ngModel)]="libroActualizar.paginas">
+      </p>
+
+      <p>
+        <label>Año de Lanzamiento:</label>
+        <input type="number" name="lanzamientoActualizar" [(ngModel)]="libroActualizar.lanzamiento">
+      </p>
+
+      <button type="submit">Actualizar Libro</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Eliminar Libro</h2>
+
+    <p>
+      <label>ID del Libro a eliminar:</label>
+      <input type="number" name="idEliminarLibro" [(ngModel)]="idEliminar">
+    </p>
+
+    <button type="button" class="btn-danger" (click)="eliminarLibro()">
+      Eliminar Libro
+    </button>
+  </div>
+
+</div>
+
+<div class="card tabla-card">
+  <div class="tabla-header">
+    <h2>Lista de Libros</h2>
+    <button type="button" (click)="listarLibros()">Listar Libros</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>ID Autor</th>
+        <th>ID Categoría</th>
+        <th>Título</th>
+        <th>Editorial</th>
+        <th>Páginas</th>
+        <th>Lanzamiento</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let l of libros">
+        <td>{{ l.id }}</td>
+        <td>{{ l.idAutor }}</td>
+        <td>{{ l.idCategoria }}</td>
+        <td>{{ l.titulo }}</td>
+        <td>{{ l.editorial }}</td>
+        <td>{{ l.paginas }}</td>
+        <td>{{ l.lanzamiento }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

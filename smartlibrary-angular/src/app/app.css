@@ -1,0 +1,94 @@
+.contenedor-principal {
+  min-height: 100vh;
+  background: #f4f6f9;
+  font-family: Arial, sans-serif;
+}
+
+.encabezado {
+  background: linear-gradient(135deg, #1f3c88, #162b63);
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+.encabezado h1 {
+  margin: 0;
+  font-size: 34px;
+}
+
+.encabezado p {
+  margin-top: 8px;
+  font-size: 16px;
+}
+
+.dashboard {
+  width: 90%;
+  margin: 25px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.resumen-card {
+  background: white;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.10);
+  border-left: 6px solid #1f3c88;
+}
+
+.resumen-card h3 {
+  margin: 0 0 8px;
+  color: #1f3c88;
+}
+
+.resumen-card p {
+  margin: 0 0 10px;
+  color: #555;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 25px;
+}
+
+.menu button {
+  background: #1f3c88;
+  color: white;
+  border: none;
+  padding: 15px 28px;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.menu button:hover {
+  background: #162b63;
+}
+
+.contenido {
+  background: white;
+  margin: 0 auto 35px;
+  width: 90%;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.10);
+}
+
+@media (max-width: 900px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu button {
+    width: 90%;
+  }
+}
